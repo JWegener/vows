@@ -18,9 +18,13 @@ face recognition.
 Before starting, document what this method does and does not measure:
 
 - **Measures:** speaking time (approximated from dialogue line counts / word
-  counts).
+  counts). Voiceover and intercom / overhead-page lines **are counted** as
+  speaking time when the transcript attributes them to the character, since
+  they represent the character actively on the soundtrack. They are tagged
+  in the CSV with a `delivery` column (`on_screen` / `voiceover` / `page`)
+  so they can be filtered out in a sensitivity pass.
 - **Does not measure:** silent on-screen presence, reaction shots, background
-  scenes, voiceover without attribution.
+  scenes, unattributed voiceover.
 - **Attribution problem:** broadcast closed captions for Chicago Med rarely
   include speaker labels. Fan-transcribed scripts (e.g. Forever Dreaming,
   Springfield! Springfield!, 8flix) usually do. The quality of results depends
@@ -69,8 +73,10 @@ define a regex that matches all of them.
 - For each episode, compute for each target character:
   - `line_count` — number of dialogue lines.
   - `word_count` — total words spoken.
-  - `estimated_seconds` — `word_count / 2.5` (≈150 wpm average TV dialogue);
-    cite the rate and keep it configurable.
+  - `estimated_seconds` — `word_count / 2.5` words-per-second (≈150 wpm,
+    the commonly cited average for conversational English in scripted TV).
+    Keep the rate in a single config constant so a sensitivity analysis
+    at 2.3 and 2.7 wps can be run without touching the pipeline.
 - Emit `data/screen_time.csv` with one row per (episode, character).
 
 ### Step 4 — Aggregate & compare
@@ -104,7 +110,11 @@ define a regex that matches all of them.
 - `analysis.ipynb` or `analysis.py` — the aggregation and plots.
 - `results.md` — tables, charts, and the written conclusion with caveats.
 
-## 8. Open questions to resolve before starting
+## 8. Settled decisions
 
-1. Decide whether voiceover / intercom pages count as speaking time.
-2. Pick the words-per-second conversion rate and document it.
+1. **Voiceover and intercom pages count** as speaking time when the
+   transcript attributes them to the character, but are tagged by delivery
+   type so they can be excluded in a sensitivity run.
+2. **Words-per-second rate is 2.5** (≈150 wpm), held in a single config
+   constant; sensitivity analysis at 2.3 and 2.7 wps reported alongside
+   the headline numbers.
