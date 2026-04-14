@@ -25,9 +25,8 @@ Before starting, document what this method does and does not measure:
   include speaker labels. Fan-transcribed scripts (e.g. Forever Dreaming,
   Springfield! Springfield!, 8flix) usually do. The quality of results depends
   almost entirely on finding a transcript source that labels the speaker.
-- **Season 11 incompleteness:** as of April 2026, S11 is still airing, so any
-  S11 totals should be labelled as "through episode N" rather than a season
-  total.
+- **Season coverage:** both S10 and S11 have fully aired as of April 2026,
+  so full-season totals are available for both.
 
 ## 3. Data sources (in priority order)
 
@@ -44,12 +43,10 @@ Before starting, document what this method does and does not measure:
 
 ## 4. Character disambiguation
 
-Before collection, lock down exactly which character each name refers to:
+Targets are confirmed:
 
 - **Dr. Caitlin Lenox** — played by Sarah Ramirez, introduced in S10.
-- **Dr. Frost** — confirm full name, actor, and first appearance episode.
-  If the intended character is actually Dr. Archer, Dr. Ripley, or another
-  regular, correct the name before collection begins.
+- **Dr. Frost** — confirmed as the intended character.
 
 Note common misspellings and nicknames that will appear in transcripts
 ("Lenox" vs "Lennox", "Dr. Frost" vs "Frost" vs first name, etc.) and
@@ -109,7 +106,5 @@ define a regex that matches all of them.
 
 ## 8. Open questions to resolve before starting
 
-1. Confirm "Dr. Frost" is the intended character (full name, actor).
-2. Confirm which S11 episodes have aired at the time of analysis.
-3. Decide whether voiceover / intercom pages count as speaking time.
-4. Pick the words-per-second conversion rate and document it.
+1. Decide whether voiceover / intercom pages count as speaking time.
+2. Pick the words-per-second conversion rate and document it.
